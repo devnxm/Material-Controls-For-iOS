@@ -554,9 +554,13 @@
 }
 
 - (BOOL)shouldSelectDate:(NSDate *)date {
-  BOOL result =
-      (date.timeIntervalSince1970 >= self.minimumDate.timeIntervalSince1970);
-  return result;
+    BOOL result;
+    if ([self.maximumDate timeIntervalSince1970] >= date.timeIntervalSince1970 ) {
+        result =
+        (date.timeIntervalSince1970 >= self.minimumDate.timeIntervalSince1970);
+        return result;
+    }
+    return result;
 }
 
 - (void)didSelectDate:(NSDate *)date {
